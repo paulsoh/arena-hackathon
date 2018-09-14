@@ -1,6 +1,6 @@
 const inquirer = require("inquirer")
 
-const { clear } = require("./utils")
+const { clear } = require("../utils")
 
 const properties = [
   {

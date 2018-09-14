@@ -1,9 +1,5 @@
 import {Command} from '@oclif/command'
-import axios from 'axios'
-import cli from 'cli-ux'
-import * as inquirer from 'inquirer'
-
-import {clear} from '../utils'
+import { login } from '../views/login'
 
 export default class Register extends Command {
   static description = 'describe the command here'
@@ -11,6 +7,7 @@ export default class Register extends Command {
   static args = [{name: 'file'}]
 
   async run() {
+    login()
     // createClinicalTest()
     
     
