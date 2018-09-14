@@ -86,6 +86,12 @@ const properties = [
       }
     ]
   },
+  {
+    name: 'volume',
+    friendlyName: 'A volume of recruitment',
+    type: 'input',
+    validate: vol => 0 < vol && vol < Infinity
+  }
 ]
 
 const clinicalTest = {}
