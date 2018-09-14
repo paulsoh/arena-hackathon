@@ -1,4 +1,3 @@
-const axios = require("axios")
 const inquirer = require("inquirer")
 
 const { clear } = require("./utils")
@@ -87,22 +86,13 @@ const properties = [
       }
     ]
   },
-  {
-    name: "description",
-    friendlyName: "Description",
-    inputs: [
-      {
-        name: "description",
-        type: "editor"
-      }
-    ]
-  }
 ]
 
 const clinicalTest = {}
 
 const createClinicalTest = async () => {
   while (true) {
+    clear()
     const { property } = await inquirer.prompt([
       {
         name: "property",
@@ -139,8 +129,9 @@ const createClinicalTest = async () => {
       }
     ])
     // console.log(property)
+    clear()
     if (property === "Confirm") {
-      const confirm = await inquirer.prompt([
+      const { confirm } = await inquirer.prompt([
         {
           name: "confirm",
           message: "Is it right?",
@@ -148,9 +139,11 @@ const createClinicalTest = async () => {
         }
       ])
 
-      if (confirm) return responses
+      if (confirm) return clinicalTest
+      continue
     }
     // console.log(property)
+    clear()
     const responses = await inquirer.prompt(
       properties.filter(p => p.name === property)[0].inputs
     )
@@ -165,6 +158,6 @@ const createClinicalTest = async () => {
   }
 }
 
-createClinicalTest()
+// createClinicalTest()
 
-exports = { createClinicalTest }
+module.exports = { createClinicalTest }
