@@ -60,7 +60,7 @@ const createClinicalTest = ({
     .then(
       resp => {
         console.log(
-          `Successfully added Patient with tx hash ${resp.transactionHash}`
+          `Successfully added Clinical Trial with tx hash ${resp.transactionHash}`
         )
       },
       e => console.log(e)

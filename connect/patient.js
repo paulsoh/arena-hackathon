@@ -41,7 +41,6 @@ const createPatient = ({
   familyHistory = JSON.stringify([])
 }) => {
   // Create payload
-  console.log(diseases)
   return patientRegistrarRef.methods
     .registerPatient(
       patientAddress,
