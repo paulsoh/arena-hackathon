@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+const figlet = require('figlet')
 const inquirer = require('inquirer')
 
 const { clear } = require('../utils')
@@ -7,6 +9,12 @@ const { clinicalTests } = require('../tempData')
 const getClinicalTests = async () => {
   while (true) {
     clear()
+
+    console.log(
+      chalk.green(
+        figlet.textSync('Clinical Trials', { horizontalLayout: 'full' })
+      )
+    )  
 
     const { clinicalTest } = await inquirer.prompt([
       {
