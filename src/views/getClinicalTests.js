@@ -44,7 +44,7 @@ const getClinicalTests = async () => {
       }
     ])
 
-    if (clinicalTest === '새로운 인체실험 생성하기') {
+    if (clinicalTest === '새로운 인체.. 아니 임상실험 생성하기') {
       await createClinicalTest()
       continue
     }
