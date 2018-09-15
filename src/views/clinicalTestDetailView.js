@@ -9,7 +9,19 @@ const clinicalTestDetailView = async clinicalTest => {
 
     const patients = await getPatients()
     const patientRows = patients.map(patient => (
-      `${patient.email.padEnd(30, ' ')}${patient.gender}\t${patient.isSmoker}\t${patient.height}\t${patient.weight}\t${patient.diseases.length ? patient.diseases[0] : '❌'}`
+      `${
+        patient.email.padEnd(30, ' ')
+      }${
+        patient.gender
+      }\t${
+        patient.isSmoker
+      }\t${
+        patient.height
+      }\t${
+        patient.weight
+      }\t${
+        patient.diseases.length ? patient.diseases[0] : '❌'
+      }`
     ))
 
     console.log(clinicalTest)
