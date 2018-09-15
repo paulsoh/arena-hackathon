@@ -4,6 +4,15 @@ Deck.create({
   slides: [{
     shapes: [
         {
+            name: 'Slide#0',
+            type: 'FigText',
+            options: {
+                text: "THE 'REAL' PROBLEM",
+                x: 'center',
+                y: 4
+            }
+        },
+        {
             name: 'Slide#1',
             type: 'Text',
             options: {
@@ -74,7 +83,44 @@ Deck.create({
                 x: 'center',
                 y: 36
             }
-        }
+        },
+        {
+            name: 'Slide#9',
+            type: 'FigText',
+            options: {
+                text: "As a Result,",
+                x: 'center',
+                y: 40
+            }
+        },
+        {
+            name: 'Slide#10',
+            type: 'Text',
+            options: {
+                text: "Patients got a chance of treat their disease.\nAnd got a financial blah blah.",
+                x: 'center',
+                y: 47
+            }
+        },
+        {
+            name: 'Slide#11',
+            type: 'Text',
+            options: {
+                text: "It can reduce the need for socially wasted goods.",
+                x: 'center',
+                y: 50
+            }
+        },
+        {
+            name: 'Slide#12',
+            type: 'FigText',
+            options: {
+                text: "THANKS, We show you it.",
+                x: 'center',
+                y: 52
+            }
+        },
+        
     ],
     animations: [
         {
@@ -88,11 +134,19 @@ Deck.create({
             name: 'typing#2',
             type: 'Print',
             options: {
-                duration: 2000
+                duration: 4000
+            }
+        },
+        {
+            name: 'typingSlow',
+            type: 'Print',
+            options: {
+                duration: 5000
             }
         }
     ],
     order: [
+      'Slide#0::typing#2',
       'Slide#1::typing',
       'Slide#2::typing',
       'Slide#3::typing',
@@ -101,6 +155,10 @@ Deck.create({
       'Slide#6::typing',
       'Slide#7::typing',
       'Slide#8::typing#2',
+      'Slide#9::typingSlow',
+      'Slide#10::typing#2',
+      'Slide#11::typing#2',
+      'Slide#12::typing#2'
     ]
   }]
 }).run()

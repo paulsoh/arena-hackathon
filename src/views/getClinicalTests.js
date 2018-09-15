@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+const figlet = require('figlet')
 const inquirer = require('inquirer')
 
 const { clear } = require('../utils')
@@ -8,21 +10,27 @@ const getClinicalTests = async () => {
   while (true) {
     clear()
 
+    console.log(
+      chalk.green(
+        figlet.textSync('Clinical Trials', { horizontalLayout: 'full' })
+      )
+    )  
+
     const { clinicalTest } = await inquirer.prompt([
       {
         name: 'clinicalTest',
-        message: 'Your 임상실험 리스트',
+        message: 'List of Clinical Trials',
         type: 'list',
         choices: [
           ...clinicalTests.map(clinicalTest => clinicalTest.title),
           new inquirer.Separator(),
-          '새로운 인체.. 아니 임상실험 생성하기',
+          'Create new clinical trial',
           new inquirer.Separator(),
         ]
       }
     ])
 
-    if (clinicalTest === '새로운 인체.. 아니 임상실험 생성하기') {
+    if (clinicalTest === 'Create new clinical trial') {
       clinicalTests.push(await createClinicalTest())
       continue
     }

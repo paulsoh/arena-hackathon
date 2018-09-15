@@ -67,8 +67,12 @@ const createPatient = ({
         console.log(
           `Successfully added Patient with tx hash ${resp.transactionHash}`
         )
+        return Promise.resolve(resp)
       },
-      e => console.log(e)
+      e => {
+        console.log(e)
+        return Promise.reject(e)
+      }
     )
 }
 

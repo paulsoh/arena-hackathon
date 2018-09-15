@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+const figlet = require('figlet')
 const inquirer = require("inquirer")
 
 const { ClinicalTest } = require('../models/ClinicalTest')
@@ -105,6 +107,13 @@ const clinicalTest = new ClinicalTest()
 const createClinicalTest = async () => {
   while (true) {
     clear()
+
+    console.log(
+      chalk.green(
+        figlet.textSync('New Clinical Trial', { horizontalLayout: 'full' })
+      )
+    )  
+    
     const { property } = await inquirer.prompt([
       {
         name: "property",

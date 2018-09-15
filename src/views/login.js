@@ -9,7 +9,7 @@ const login = async () => {
         name: "role",
         message: "Who are you?",
         type: "list",
-        choices: ["patient", "company"]
+        choices: ["patient", "institute"]
       },
       {
         name: "address",
