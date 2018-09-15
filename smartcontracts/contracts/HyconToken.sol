@@ -2,43 +2,43 @@ pragma solidity ^0.4.23;
 
 import "./StandardToken.sol";
 import "./BurnableToken.sol";
-import "./Ownable.sol";
+import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract HyconToken is StandardToken, BurnableToken, Ownable {
-    
+
     using SafeMath for uint256;
-    
+
     address public owner; //
     string public name = "HyconToken";
     string public symbol = "HCX";
     uint8 public decimals = 18;
     uint public totalSupply = 10000000000000000000000;
 
-    
+
     mapping(address => uint) balances;
     mapping(address => mapping(address => uint)) internal allowed;
     mapping(address => uint256) private ethBalance;
-    
+
     event Burn(address indexed burner, uint256 value);
     event Transfer(address indexed from, address indexed to, uint value);
     event Approval(address indexed owner, address indexed spender, uint value);
     event Mint(address indexed to, uint amount);
     event OwnershipRenounced(address indexed previousOwner);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-    
+
     HyconToken token;
 
     constructor() public {
         owner = msg.sender;
-        balances[0x91d97ac87ff63ec36639de883623a3bd95227626] = totalSupply;
-        emit Transfer(address(0), 0x91d97ac87ff63ec36639de883623a3bd95227626, totalSupply);
+        balances[0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1] = totalSupply;
+        emit Transfer(address(0), 0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1, totalSupply);
     }
-    
+
     modifier onlyOwner() {
     require(msg.sender == owner);
     _;
     }
-    
+
     // check deposit pool in this contract
     function etherBalanceOf() public view returns(uint256) {
         return this.balance;
@@ -49,30 +49,30 @@ contract HyconToken is StandardToken, BurnableToken, Ownable {
      uint amount = msg.value;
      uint tokens = amount /1000000000000000000 * 11;
      buyAndTransfer(msg.sender, tokens);
-     emit Transfer(0x91d97ac87ff63ec36639de883623a3bd95227626, msg.sender, tokens);
+     emit Transfer(0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1, msg.sender, tokens);
     }
 
-    
+
     function buyAndTransfer(address _to, uint _value) public returns (bool) {
         require(_to != address(0)); //require 뒤에는 논리조건문이 온다.
-        require(_value <= balances[0x91d97ac87ff63ec36639de883623a3bd95227626]);
-        balances[0x91d97ac87ff63ec36639de883623a3bd95227626] = balances[0x91d97ac87ff63ec36639de883623a3bd95227626] - _value;
+        require(_value <= balances[0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1]);
+        balances[0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1] = balances[0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1] - _value;
         balances[_to] = balances[_to] + _value;
-        SafeMath.add(ethBalance[0x91d97ac87ff63ec36639de883623a3bd95227626], _value);
-        emit Transfer(0x91d97ac87ff63ec36639de883623a3bd95227626, _to, _value);
+        SafeMath.add(ethBalance[0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1], _value);
+        emit Transfer(0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1, _to, _value);
         return true;
     }
-    
+
     // for information buyer give the token to supplier
     function transfer(address _to, uint _value) public returns (bool) {
-        require(_to != address(0)); 
+        require(_to != address(0));
         require(_value <= balances[msg.sender]);
         balances[msg.sender] = balances[msg.sender] - _value;
         balances[_to] = balances[_to] + _value;
         emit Transfer(msg.sender, _to, _value);
         return true;
     }
-    
+
     // for information supplier when withdrawal Ether
     function withdrawEther(uint256 amount) external {
         uint withdrawalether = amount / 10;
@@ -84,7 +84,7 @@ contract HyconToken is StandardToken, BurnableToken, Ownable {
     function balanceOf(address _owner) public view returns (uint256 balance) {
         return balances[_owner];
     }
-    
+
     function transferFrom(address _from, address _to, uint256 _value) public returns(bool) {
         require(_to != address(0));
         require(_value <= balances[_from]);
@@ -114,11 +114,11 @@ contract HyconToken is StandardToken, BurnableToken, Ownable {
         emit Transfer(address(0), _to, _amount);
         return true;
     }
-    
+
     function burn(uint256 _value) public {
     _burn(msg.sender, _value);
     }
-    
+
     function _burn(address _owner, uint256 _value) internal {
     require(_value <= balances[_owner]);
     // no need to require value <= totalSupply, since that would imply the
@@ -129,7 +129,7 @@ contract HyconToken is StandardToken, BurnableToken, Ownable {
     emit Burn(_owner, _value);
     emit Transfer(_owner, address(0), _value);
     }
-    
+
     function renounceOwnership() public onlyOwner {
     emit OwnershipRenounced(owner);
     owner = address(0);
@@ -152,6 +152,6 @@ contract HyconToken is StandardToken, BurnableToken, Ownable {
      emit OwnershipTransferred(owner, _newOwner);
      owner = _newOwner;
     }
-    
+
 
 }

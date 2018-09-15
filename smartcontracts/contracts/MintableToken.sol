@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 import "./StandardToken.sol";
-import "../../ownership/Ownable.sol";
+import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 
 /**
