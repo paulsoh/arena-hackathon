@@ -5,7 +5,7 @@ var items = ["Register Patient", "Launch Experiment", "Query Patients", "Help"]
 
 const { login } = require('./views/login')
 const { registerPatient } = require('./views/registerPatient')
-const { createClinicalTest } = require('./views/createClinicalTest')
+const { getClinicalTests } = require('./views/getClinicalTests')
 
 var options = {
   y: 1, // the menu will be on the top of the terminal
@@ -23,7 +23,7 @@ term.drawImage(path.join(__dirname, "../", "hospital.jpg"), {
   if (user.role === 'human') {
     await registerPatient()
   } else {
-    await createClinicalTest()
+    await getClinicalTests()
   }
 })
 

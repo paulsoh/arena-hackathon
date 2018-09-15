@@ -34,7 +34,7 @@ const properties = [
         name: "gender",
         message: "Gender",
         type: "list",
-        choices: ["M", "F"]
+        choices: ["M", "F", "Don't care"]
       }
     ]
   },
