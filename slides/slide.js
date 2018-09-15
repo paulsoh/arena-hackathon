@@ -97,7 +97,7 @@ Deck.create({
             name: 'Slide#10',
             type: 'Text',
             options: {
-                text: "Patients got a chance of treat their disease.\nAnd got a financial blah blah.",
+                text: "Patients got a chance of treat their disease.\nAnd got a financial rewards by ERC20 token.",
                 x: 'center',
                 y: 47
             }
@@ -146,7 +146,7 @@ Deck.create({
         }
     ],
     order: [
-      'Slide#0::typing#2',
+      'Slide#0::typing',
       'Slide#1::typing',
       'Slide#2::typing',
       'Slide#3::typing',
