@@ -86,7 +86,8 @@ const properties = [
       {
         name: "smoking",
         message: "Is smoker available?",
-        type: "confirm"
+        type: "list",
+        choices: ["Yes", "No", "Don't care"]
       }
     ]
   },
