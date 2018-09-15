@@ -10,7 +10,7 @@ const { registerPatient } = require("./views/registerPatient")
 const { additionalMedicalInfo } = require("./views/additionalMedicalInfo")
 const { getClinicalTests } = require("./views/getClinicalTests")
 
-const { createPatient } = require("../connect/patient")
+const { createPatient, getPatients } = require("../connect/patient")
 
 clear()
 
@@ -20,7 +20,7 @@ console.log(
   )
 )
 
-const test = async () => {
+const entry = async () => {
   const user = await login()
 
   if (user.role === "patient") {
@@ -47,7 +47,7 @@ const test = async () => {
   }
 }
 
-test()
+entry()
 
 const data = JSON.parse(
   fs.readFileSync(path.join(__dirname, "../", "diseaseSet.json"), "utf8")

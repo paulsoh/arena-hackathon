@@ -69,7 +69,7 @@
     "test": "nyc mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md",
     "truffle": "truffle",
-    "ganache": "ganache-cli --deterministic -a 100"
+    "ganache": "ganache-cli --deterministic -a 100 -h 0.0.0.0"
   },
   "types": "lib/index.d.ts"
 }

@@ -72,4 +72,61 @@ const createPatient = ({
     )
 }
 
-module.exports = { createPatient }
+const getPatients = () => {
+  const getBasicInfo = patientRegistrarRef.methods.viewPatients().call()
+  const getDetailInfo = patientRegistrarRef.methods.viewPatientsDetail().call()
+  return Promise.all([getBasicInfo, getDetailInfo]).then(results => {
+    return rehydratePatientsList(results[0], results[1])
+  })
+}
+
+const FIELDS = [
+  "patientAddress",
+  "email",
+  "gender",
+  "birthday",
+  "isSmoker",
+  "height",
+  "weight"
+]
+
+const rehydratePatientsList = (...contractResponses) => {
+  const basicInfo = Object.values(contractResponses[0])
+  const detailInfo = Object.values(contractResponses[1])
+  const patientList = []
+
+  const [
+    addressList,
+    emailList,
+    genderList,
+    birthdayList,
+    isSmokerList,
+    heightList,
+    weightList
+  ] = basicInfo
+  const [
+    _,
+    drugsList,
+    diseasesList,
+    geneticConditionsList,
+    familyHistoryList
+  ] = detailInfo
+
+  addressList.forEach((address, index) => {
+    patientList.push({
+      patientAddress: addressList[index],
+      email: emailList[index],
+      gender: genderList[index],
+      birthday: birthdayList[index],
+      isSmoker: isSmokerList[index],
+      height: heightList[index],
+      weight: weightList[index],
+      drugs: JSON.parse(drugsList[index]),
+      diseases: JSON.parse(diseasesList[index]),
+      geneticConditions: JSON.parse(geneticConditionsList[index]),
+      familyHistory: JSON.parse(familyHistoryList[index])
+    })
+  })
+  return patientList
+}
+module.exports = { createPatient, getPatients }
