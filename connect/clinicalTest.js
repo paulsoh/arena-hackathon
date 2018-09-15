@@ -1,15 +1,24 @@
-const { ClinicalTest } = require('../src/models/ClinicalTest')
-const Web3 = require('web3')
-const fs = require('fs')
-
+const { ClinicalTest } = require("../src/models/ClinicalTest")
+const Web3 = require("web3")
+const fs = require("fs")
+const path = require("path")
 const gas = 456540
 const gasPrice = "10000000000"
 const adminAddress = "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"
 
 const httpProvider = "http://10.10.1.114:8545"
-const CLINICALTEST_CONTRACT = ""
+const CLINICALTEST_CONTRACT = "0x254dffcd3277c0b1660f6d42efbb754edababc2b"
 const clinicalTestContractABI = JSON.parse(
-  fs.readFileSync(path.join(__dirname, '../', 'smartcontracts', 'build', 'contracts', 'ClinicalTest.json'))
+  fs.readFileSync(
+    path.join(
+      __dirname,
+      "../",
+      "smartcontracts",
+      "build",
+      "contracts",
+      "ClinicalTest.json"
+    )
+  )
 ).abi
 
 const web3 = new Web3(new Web3.providers.HttpProvider(httpProvider))
@@ -21,34 +30,39 @@ const clinicalTestRef = new web3.eth.Contract(
 
 const createClinicalTest = ({
   companyAddress,
-  subject,
-  title,
-  gender,
+  subject = "",
+  title = "",
+  gender = "",
   age = JSON.stringify({}),
   bmi = JSON.stringify({}),
-  smoking,
-  volume,
+  smoking = "",
+  volume = 10
 }) => {
-  return clinicalTestRef.methods.createClinicalTest(
-    companyAddress,
-    subject,
-    title,
-    gender,
-    age,
-    bmi,
-    smoking,
-    volume,
-  ).send({
-    from: adminAddress,
-    gas,
-    gasPrice
-  }).then(resp => {
-    console.log(
-      `Successfully added Patient with tx hash ${resp.transactionHash}`
+  return clinicalTestRef.methods
+    .createClinicalTest(
+      // companyAddress, // comment out for development purposes
+      adminAddress,
+      subject,
+      title,
+      gender,
+      JSON.stringify(age),
+      JSON.stringify(bmi),
+      smoking,
+      volume
     )
-  },
-  e => console.log(e)
-  )
+    .send({
+      from: adminAddress, // comment out for development purposes
+      gas,
+      gasPrice
+    })
+    .then(
+      resp => {
+        console.log(
+          `Successfully added Patient with tx hash ${resp.transactionHash}`
+        )
+      },
+      e => console.log(e)
+    )
 }
 
 const getClinicalTests = () => {
@@ -61,25 +75,25 @@ const getClinicalTests = () => {
 
 const FIELDS = [
   "companyAddress",
-  'subject',
-  'title',
-  'gender',
-  'age',
-  'bmi',
-  'smoking',
-  'volume'
+  "subject",
+  "title",
+  "gender",
+  "age",
+  "bmi",
+  "smoking",
+  "volume"
 ]
 
 const rehydrateClinicalTests = (...contractResponses) => {
   const basicInfo = Object.values(contractResponses[0])
   const detailInfo = Object.values(contractResponses[1])
-  const clinicalTests = []
 
-  const [ addresses, subjects, titles ] = basicInfo
-  const [ _, genders, ages, bmis, smokings, volumes ] = detailInfo
+  const [addresses, subjects, titles] = basicInfo
+  const [_, genders, ages, bmis, smokings, volumes] = detailInfo
 
-  const clinicalTests = addresses.map(address => {
+  const clinicalTests = addresses.map((address, index) => {
     return new ClinicalTest({
+      companyAddress: addresses[index],
       subject: subjects[index],
       title: titles[index],
       gender: genders[index],
@@ -92,4 +106,4 @@ const rehydrateClinicalTests = (...contractResponses) => {
 
   return clinicalTests
 }
-modules.exports = { createClinicalTest, getClinicalTests }
+module.exports = { createClinicalTest, getClinicalTests }

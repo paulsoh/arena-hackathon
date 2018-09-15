@@ -8,7 +8,7 @@ const { clear } = require("./utils")
 const { login } = require("./views/login")
 const { registerPatient } = require("./views/registerPatient")
 const { additionalMedicalInfo } = require("./views/additionalMedicalInfo")
-const { getClinicalTests } = require("./views/getClinicalTests")
+const { showClinicalTests } = require("./views/getClinicalTests")
 const { getPatientList } = require("./views/getPatientList")
 const { createPatient, getPatients } = require("../connect/patient")
 
@@ -42,7 +42,7 @@ const entry = async () => {
       console.log(e)
     }
   } else {
-    await getClinicalTests(user)
+    await showClinicalTests(user)
     // 이거 구현해주실 분?
     await getPatientList()
   }

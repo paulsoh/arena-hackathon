@@ -1,8 +1,9 @@
-const chalk = require('chalk')
-const figlet = require('figlet')
+const chalk = require("chalk")
+const figlet = require("figlet")
 const inquirer = require("inquirer")
 
-const { ClinicalTest } = require('../models/ClinicalTest')
+const { ClinicalTest } = require("../models/ClinicalTest")
+const { createClinicalTest } = require("../../connect/clinicalTest")
 const { clear } = require("../utils")
 
 const properties = [
@@ -90,12 +91,12 @@ const properties = [
     ]
   },
   {
-    name: 'volume',
-    friendlyName: 'A volume of recruitment',
+    name: "volume",
+    friendlyName: "A volume of recruitment",
     inputs: [
       {
-        name: 'volume',
-        type: 'input',
+        name: "volume",
+        type: "input",
         validate: vol => 0 < vol && vol < Infinity
       }
     ]
@@ -104,16 +105,18 @@ const properties = [
 
 const clinicalTest = new ClinicalTest()
 
-const createClinicalTest = async () => {
+const createClinicalTestView = async user => {
   while (true) {
     clear()
 
+    clinicalTest.companyAddress = user.address
+
     console.log(
       chalk.green(
-        figlet.textSync('New Clinical Trial', { horizontalLayout: 'full' })
+        figlet.textSync("New Clinical Trial", { horizontalLayout: "full" })
       )
-    )  
-    
+    )
+
     const { property } = await inquirer.prompt([
       {
         name: "property",
@@ -160,7 +163,12 @@ const createClinicalTest = async () => {
         }
       ])
 
-      if (confirm) return clinicalTest
+      if (confirm) {
+        // Send Tx
+        createClinicalTest({
+          ...clinicalTest
+        })
+      }
       continue
     }
     // console.log(property)
@@ -181,4 +189,4 @@ const createClinicalTest = async () => {
 
 // createClinicalTest()
 
-module.exports = { createClinicalTest }
+module.exports = { createClinicalTestView }

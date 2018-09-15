@@ -1,42 +1,41 @@
-const chalk = require('chalk')
-const figlet = require('figlet')
-const inquirer = require('inquirer')
+const chalk = require("chalk")
+const figlet = require("figlet")
+const inquirer = require("inquirer")
 
-const { clear } = require('../utils')
-const { createClinicalTest } = require('./createClinicalTest')
-const { clinicalTests } = require('../tempData')
+const { clear } = require("../utils")
+const { createClinicalTestView } = require("./createClinicalTest")
+const { getClinicalTests } = require("../../connect/clinicalTest")
 
-const getClinicalTests = async () => {
+const showClinicalTests = async user => {
   while (true) {
     clear()
 
     console.log(
       chalk.green(
-        figlet.textSync('Clinical Trials', { horizontalLayout: 'full' })
+        figlet.textSync("Clinical Trials", { horizontalLayout: "full" })
       )
-    )  
+    )
 
+    let clinicalTests = await getClinicalTests()
     const { clinicalTest } = await inquirer.prompt([
       {
-        name: 'clinicalTest',
-        message: 'List of Clinical Trials',
-        type: 'list',
+        name: "clinicalTest",
+        message: "List of Clinical Trials",
+        type: "list",
         choices: [
           ...clinicalTests.map(clinicalTest => clinicalTest.title),
           new inquirer.Separator(),
-          'Create new clinical trial',
-          new inquirer.Separator(),
+          "Create new clinical trial",
+          new inquirer.Separator()
         ]
       }
     ])
 
-    if (clinicalTest === 'Create new clinical trial') {
-      clinicalTests.push(await createClinicalTest())
+    if (clinicalTest === "Create new clinical trial") {
+      clinicalTests.push(await createClinicalTestView(user))
       continue
     }
   }
 }
 
-// getClinicalTests()
-
-module.exports = { getClinicalTests }
+module.exports = { showClinicalTests }
