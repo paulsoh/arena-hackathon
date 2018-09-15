@@ -20,7 +20,7 @@ const clinicalTestDetailView = async clinicalTest => {
       }\t${
         patient.weight
       }\t${
-        patient.diseases.length ? patient.diseases[0] : '❌'
+        patient.disease.length ? patient.disease[0] : '❌'
       }`
     ))
 
@@ -29,7 +29,7 @@ const clinicalTestDetailView = async clinicalTest => {
     const { patientSelect } = await inquirer.prompt([
       {
         name: 'patientSelect',
-        message: `${"Email".padEnd(30, ' ')}Gender\tSmoking\tHeight\tWeight\tDiseases`,
+        message: `${"Email".padEnd(30, ' ')}Gender\tSmoking\tHeight\tWeight\tDisease`,
         type: 'list',
         choices: [
           new inquirer.Separator(''.padEnd(99, '-')),

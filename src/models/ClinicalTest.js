@@ -8,7 +8,7 @@ class ClinicalTest {
     bmi,
     smoking,
     volume,
-    diseases
+    disease
   } = {}) {
     this.companyAddress = companyAddress
     this.subject = subject
@@ -18,7 +18,7 @@ class ClinicalTest {
     this.bmi = bmi
     this.smoking = smoking
     this.volume = volume
-    this.diseases = diseases
+    this.disease = disease
   }
 }
 

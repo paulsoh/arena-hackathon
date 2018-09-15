@@ -102,11 +102,11 @@ const properties = [
     ]
   },
   {
-    name: "diseases",
-    friendlyName: 'Diseases',
+    name: "disease",
+    friendlyName: 'Disease',
     inputs: [
       {
-        name: 'diseases',
+        name: 'disease',
         type: 'input',
       }
     ]
