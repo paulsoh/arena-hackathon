@@ -49,6 +49,10 @@ class ClinicalTest {
     process.stdout.write(chalk.white(" "))
     console.log(chalk.white(`${this.title}\n`))
 
+    process.stdout.write(chalk.red.bold.underline("Disease:"))
+    process.stdout.write(chalk.white(" "))
+    console.log(chalk.white(`${this.disease}\n`))
+
     process.stdout.write(chalk.red.bold.underline("Gender:"))
     process.stdout.write(chalk.white(" "))
     console.log(chalk.white(`${this.gender || "상관 없음"}\n`))

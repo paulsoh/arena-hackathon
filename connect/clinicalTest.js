@@ -3,7 +3,7 @@ const fs = require("fs")
 const path = require("path")
 
 const { ClinicalTest } = require("../src/models/ClinicalTest")
-const loadConfig = require('./loader.js').loadConfig
+const loadConfig = require("./loader.js").loadConfig
 const { httpProvider, CLINICALTEST_CONTRACT, adminAddress } = loadConfig()
 const gas = 556540
 const gasPrice = "10000000000"
@@ -23,8 +23,6 @@ const clinicalTestContractABI = JSON.parse(
 
 const web3 = new Web3(new Web3.providers.HttpProvider(httpProvider))
 
-console.log(CLINICALTEST_CONTRACT)
-
 const clinicalTestRef = new web3.eth.Contract(
   clinicalTestContractABI,
   CLINICALTEST_CONTRACT
@@ -39,7 +37,7 @@ const createClinicalTest = ({
   bmi = JSON.stringify({}),
   smoking = "",
   volume = 10,
-  disease = JSON.stringify([]),
+  disease = JSON.stringify([])
 }) => {
   return clinicalTestRef.methods
     .createClinicalTest(
@@ -50,9 +48,9 @@ const createClinicalTest = ({
       gender,
       JSON.stringify(age),
       JSON.stringify(bmi),
-      JSON.stringify(disease),
       smoking,
-      volume
+      volume,
+      JSON.stringify(disease)
     )
     .send({
       from: adminAddress, // comment out for development purposes
@@ -62,7 +60,9 @@ const createClinicalTest = ({
     .then(
       resp => {
         console.log(
-          `Successfully added Clinical Trial with tx hash ${resp.transactionHash}`
+          `Successfully added Clinical Trial with tx hash ${
+            resp.transactionHash
+          }`
         )
       },
       e => console.log(e)
@@ -86,7 +86,7 @@ const FIELDS = [
   "bmi",
   "smoking",
   "volume",
-  "disease",
+  "disease"
 ]
 
 const rehydrateClinicalTests = (...contractResponses) => {
@@ -96,7 +96,6 @@ const rehydrateClinicalTests = (...contractResponses) => {
   const [addresses, subjects, titles] = basicInfo
   const [_, genders, ages, bmis, smokings, volumes, diseases] = detailInfo
 
-  console.log(detailInfo)
   const clinicalTests = addresses.map((address, index) => {
     return new ClinicalTest({
       companyAddress: addresses[index],
@@ -107,7 +106,7 @@ const rehydrateClinicalTests = (...contractResponses) => {
       bmi: JSON.parse(bmis[index]),
       smoking: smokings[index],
       volume: volumes[index],
-      disease: diseases[index],
+      disease: diseases[index]
     })
   })
 
