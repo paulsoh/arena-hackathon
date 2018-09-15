@@ -1,6 +1,6 @@
 {
-  "httpProvider": "http://10.10.1.114:8545",
+  "httpProvider": "http://0.0.0.0:8545",
   "CLINICALTEST_CONTRACT": "0x254dffcd3277c0b1660f6d42efbb754edababc2b",
   "PATIENT_CONTRACT": "0xcfeb869f69431e42cdb54a4f4f105c19c080a601",
-  "adminAddress":"0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"
+  "adminAddress": "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"
 }

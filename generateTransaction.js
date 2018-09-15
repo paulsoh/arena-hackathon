@@ -139,10 +139,10 @@ const clinicalTestList = [
     companyAddress: "0x18282ec61c35bef47698c3e65314c9a0ff617b3c",
     subject: "병리학과",
     title:
-      "급성 및 만성 위염 환자에서 CKD-495의 유효성과 안전성을 비교 평가하기 위한 무작위배정, 이중눈가림, 평행설계, 다기관, 제2상 임상시험",
+      "급성 및 만성 위염 환자에서 CKD-495의 유효성과 안전성을 비교 평가하기 위한 무작위배정, 이중눈가림",
     age: { min: 20, max: 55 },
     volume: 5,
-    diseases: ["급성 출혈성 위염", "상세불명의 만성 위염"],
+    diseases: ["급성 출혈성 위염"],
     smoking: "No"
   },
   {
