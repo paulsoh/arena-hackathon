@@ -8,7 +8,7 @@ const { registerPatient } = require("./views/registerPatient")
 const { additionalMedicalInfo } = require("./views/additionalMedicalInfo")
 const { getClinicalTests } = require("./views/getClinicalTests")
 
-const { createPatient } = require("../connect/patient")
+const { createPatient, getPatients } = require("../connect/patient")
 
 var options = {
   y: 1, // the menu will be on the top of the terminal
@@ -46,6 +46,7 @@ term.drawImage(
         familyHistory: JSON.stringify(patientInfo.familyHistory)
       })
     } else {
+      getPatients().then(resp => console.log(resp))
       await getClinicalTests(user)
     }
   }
