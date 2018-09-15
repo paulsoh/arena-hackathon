@@ -118,7 +118,7 @@ const payPatients = patientAddresses => {
     return new Promise((resolve, reject) => {
       console.log(chalk.yellow.bold(`Sending token to ${addr}...`))
       setTimeout(() => {
-        console.log('Success!')
+        console.log(chalk.green.bold(`Success! (address: ${addr})`))
         resolve();
       }, Math.random() * 2000)
     })
