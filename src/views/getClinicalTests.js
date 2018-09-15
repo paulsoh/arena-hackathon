@@ -38,7 +38,7 @@ const getClinicalTests = async () => {
         choices: [
           ...clinicalTests.map(clinicalTest => clinicalTest.title),
           new inquirer.Separator(),
-          '새로운 인체실험 생성하기',
+          '새로운 인체.. 아니 임상실험 생성하기',
           new inquirer.Separator(),
         ]
       }
