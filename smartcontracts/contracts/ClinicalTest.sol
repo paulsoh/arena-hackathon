@@ -13,6 +13,7 @@ contract ClinicalTest {
         string bmi;
         string smoking;
         uint volume;
+        string diseases;
     }
 
     mapping(address => ClinicalTest) public clinicalTests;
@@ -50,12 +51,13 @@ contract ClinicalTest {
     }
 
     function getClinicalTestDetails() public view returns (
-        address[],   // companyAddress
+        address[],  // companyAddress
         string[],   // gender
         string[],   // age
         string[],   // bmi
         string[],   // smoking
-        uint[]      // volume
+        uint[],     // volume
+        string[]    // diseases
     ) {
         address[] memory companyAddress = new address[](clinicalTestList.length);
         string[] memory gender = new string[](clinicalTestList.length);
@@ -63,6 +65,7 @@ contract ClinicalTest {
         string[] memory bmi = new string[](clinicalTestList.length);
         string[] memory smoking = new string[](clinicalTestList.length);
         uint[]   memory volume = new uint[](clinicalTestList.length);
+        string[] memory diseases = new string[](clinicalTestList.length);
 
         for (uint i = 0; i < clinicalTestList.length; i++) {
             companyAddress[i] = clinicalTestList[i].companyAddress;
@@ -71,9 +74,10 @@ contract ClinicalTest {
             bmi[i] = clinicalTestList[i].bmi;
             smoking[i] = clinicalTestList[i].smoking;
             volume[i] = clinicalTestList[i].volume;
+            diseases[i] = clinicalTestList[i].diseases;
         }
 
-        return (companyAddress, gender, age, bmi, smoking, volume);
+        return (companyAddress, gender, age, bmi, smoking, volume, diseases);
     }
 
     function createClinicalTest(
@@ -84,7 +88,8 @@ contract ClinicalTest {
         string age,
         string bmi,
         string smoking,
-        uint volume
+        uint volume,
+        string diseases
     ) public onlyAdmin(msg.sender)
     {
         clinicalTests[companyAddress].subject = subject;
@@ -94,6 +99,7 @@ contract ClinicalTest {
         clinicalTests[companyAddress].bmi = bmi;
         clinicalTests[companyAddress].smoking = smoking;
         clinicalTests[companyAddress].volume = volume;
+        clinicalTests[companyAddress].diseases = diseases;
 
         clinicalTestList.push(ClinicalTest({
             companyAddress: companyAddress,
@@ -103,7 +109,8 @@ contract ClinicalTest {
             age: age,
             bmi: bmi,
             smoking: smoking,
-            volume: volume
+            volume: volume,
+            diseases: diseases
         }));
     }
 }
