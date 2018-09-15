@@ -1,7 +1,7 @@
 const Web3 = require("web3")
 const fs = require("fs")
 const path = require("path")
-
+const chalk = require("chalk")
 const { ClinicalTest } = require("../src/models/ClinicalTest")
 const loadConfig = require("./loader.js").loadConfig
 const { httpProvider, CLINICALTEST_CONTRACT, adminAddress } = loadConfig()
@@ -112,4 +112,10 @@ const rehydrateClinicalTests = (...contractResponses) => {
 
   return clinicalTests
 }
-module.exports = { createClinicalTest, getClinicalTests }
+
+const payPatients = patientAddresses => {
+  patientAddresses.forEach(addr =>
+    console.log(chalk.yellow.bold(`Sending token to ${addr}...`))
+  )
+}
+module.exports = { createClinicalTest, getClinicalTests, payPatients }
