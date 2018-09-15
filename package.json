@@ -14,6 +14,7 @@
     "inquirer": "^6.2.0",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "inquirer-checkbox-plus-prompt": "^1.0.1",
+    "kittik": "^2.1.2",
     "terminal-kit": "^1.26.2",
     "tslib": "^1"
   },
