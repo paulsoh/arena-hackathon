@@ -166,7 +166,7 @@ const createClinicalTestView = async user => {
     ])
     clear()
     if (property === "Confirm") {
-      console.log(clinicalTest.prettyPrint())
+      clinicalTest.prettyPrint()
       const { confirm } = await inquirer.prompt([
         {
           name: "confirm",

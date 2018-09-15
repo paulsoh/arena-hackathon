@@ -17,7 +17,7 @@ const clinicalTestDetailView = async clinicalTest => {
     )
 
     // Print Clinical Test Meta Data
-    console.log(clinicalTest.prettyPrint())
+    clinicalTest.prettyPrint()
 
     const { patientSelect } = await inquirer.prompt([
       {
@@ -42,7 +42,7 @@ const clinicalTestDetailView = async clinicalTest => {
   }
 }
 
-// clinicalDetailView()
+// clinicalTestDetailView()
 
 module.exports = {
   clinicalTestDetailView
