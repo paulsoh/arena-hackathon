@@ -78,7 +78,7 @@ const clinicalTestDetailView = async clinicalTest => {
           "===================================================================================\n"
         )
       )
-      payPatients(patientSelect)
+      await payPatients(patientSelect)
       await inquirer.prompt([
         {
           name: "paymentsMade",

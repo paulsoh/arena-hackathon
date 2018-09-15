@@ -114,8 +114,14 @@ const rehydrateClinicalTests = (...contractResponses) => {
 }
 
 const payPatients = patientAddresses => {
-  patientAddresses.forEach(addr =>
-    console.log(chalk.yellow.bold(`Sending token to ${addr}...`))
-  )
+  return Promise.all(patientAddresses.map((addr, index) => {
+    return new Promise((resolve, reject) => {
+      console.log(chalk.yellow.bold(`Sending token to ${addr}...`))
+      setTimeout(() => {
+        console.log('Success!')
+        resolve();
+      }, Math.random() * 2000)
+    })
+  }))
 }
 module.exports = { createClinicalTest, getClinicalTests, payPatients }
