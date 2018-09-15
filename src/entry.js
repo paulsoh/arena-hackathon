@@ -31,6 +31,7 @@ term.drawImage(
       const additionalInfo = await additionalMedicalInfo(patientBasicInfo)
 
       const patientInfo = { ...patientBasicInfo, ...additionalInfo }
+      console.log(patientInfo)
       createPatient({
         patientAddress: patientInfo.address,
         email: patientInfo.email,

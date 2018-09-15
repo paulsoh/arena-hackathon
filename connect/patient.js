@@ -2,7 +2,7 @@ const Web3 = require("web3")
 const fs = require("fs")
 const path = require("path")
 
-const gas = 267540
+const gas = 467540
 const gasPrice = "10000000000"
 const adminAddress = "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"
 
@@ -36,12 +36,13 @@ const createPatient = ({
   isSmoker = False,
   height,
   weight,
-  drugs,
-  diseases,
-  geneticCondtions,
-  familyHistory
+  drugs = JSON.stringify([]),
+  diseases = JSON.stringify([]),
+  geneticConditions = JSON.stringify([]),
+  familyHistory = JSON.stringify([])
 }) => {
   // Create payload
+  console.log(diseases)
   return patientRegistrarRef.methods
     .registerPatient(
       patientAddress,
@@ -53,7 +54,7 @@ const createPatient = ({
       weight,
       drugs,
       diseases,
-      geneticCondtions,
+      geneticConditions,
       familyHistory
     )
     .send({

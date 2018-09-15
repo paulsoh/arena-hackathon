@@ -44,7 +44,7 @@ const additionalMedicalInfo = async () => {
       default: true
     },
     {
-      name: "diesases",
+      name: "diseases",
       message: "현재 진단 받은 질병을 검색 후 선택하세요",
       type: "checkbox-plus",
       highlight: true,
