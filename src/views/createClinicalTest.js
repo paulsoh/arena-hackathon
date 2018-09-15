@@ -1,5 +1,6 @@
 const inquirer = require("inquirer")
 
+const { ClinicalTest } = require('../models/ClinicalTest')
 const { clear } = require("../utils")
 
 const properties = [
@@ -33,7 +34,7 @@ const properties = [
         name: "gender",
         message: "Gender",
         type: "list",
-        choices: ["M", "F"]
+        choices: ["M", "F", "Don't care"]
       }
     ]
   },
@@ -89,12 +90,17 @@ const properties = [
   {
     name: 'volume',
     friendlyName: 'A volume of recruitment',
-    type: 'input',
-    validate: vol => 0 < vol && vol < Infinity
+    inputs: [
+      {
+        name: 'volume',
+        type: 'input',
+        validate: vol => 0 < vol && vol < Infinity
+      }
+    ]
   }
 ]
 
-const clinicalTest = {}
+const clinicalTest = new ClinicalTest()
 
 const createClinicalTest = async () => {
   while (true) {
