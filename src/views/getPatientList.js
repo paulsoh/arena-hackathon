@@ -1,7 +1,7 @@
 const inquirer = require("inquirer")
 
 const { clear } = require("../utils")
-const { createClinicalTest } = require("./createClinicalTest")
+const { createClinicalTest } = require("./createClinicalTestView")
 const { clinicalTests } = require("../tempData")
 
 const getPatientList = async () => {

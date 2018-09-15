@@ -3,10 +3,11 @@ const figlet = require("figlet")
 const inquirer = require("inquirer")
 
 const { clear } = require("../utils")
-const { createClinicalTestView } = require("./createClinicalTest")
+const { createClinicalTestView } = require("./createClinicalTestView")
+const { clinicalTestDetailView } = require('./clinicalTestDetailView')
 const { getClinicalTests } = require("../../connect/clinicalTest")
 
-const showClinicalTests = async user => {
+const clinicalTestsView = async user => {
   while (true) {
     clear()
 
@@ -17,9 +18,9 @@ const showClinicalTests = async user => {
     )
 
     let clinicalTests = await getClinicalTests()
-    const { clinicalTest } = await inquirer.prompt([
+    const { title } = await inquirer.prompt([
       {
-        name: "clinicalTest",
+        name: "title",
         message: "List of Clinical Trials",
         type: "list",
         choices: [
@@ -31,11 +32,15 @@ const showClinicalTests = async user => {
       }
     ])
 
-    if (clinicalTest === "Create new clinical trial") {
+
+    if (title === "Create new clinical trial") {
       clinicalTests.push(await createClinicalTestView(user))
       continue
     }
+
+    const selectedClinicalTest = clinicalTests.filter(c => c.title === title)[0]
+    await clinicalTestDetailView(selectedClinicalTest)
   }
 }
 
-module.exports = { showClinicalTests }
+module.exports = { clinicalTestsView }
