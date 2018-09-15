@@ -1,13 +1,13 @@
-const { ClinicalTest } = require("../src/models/ClinicalTest")
 const Web3 = require("web3")
 const fs = require("fs")
 const path = require("path")
+
+const { ClinicalTest } = require("../src/models/ClinicalTest")
+const loadConfig = require('./loader.js').loadConfig
+const { httpProvider, CLINICALTEST_CONTRACT, adminAddress } = loadConfig()
 const gas = 456540
 const gasPrice = "10000000000"
-const adminAddress = "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"
 
-const httpProvider = "http://10.10.1.114:8545"
-const CLINICALTEST_CONTRACT = "0x254dffcd3277c0b1660f6d42efbb754edababc2b"
 const clinicalTestContractABI = JSON.parse(
   fs.readFileSync(
     path.join(
@@ -22,6 +22,8 @@ const clinicalTestContractABI = JSON.parse(
 ).abi
 
 const web3 = new Web3(new Web3.providers.HttpProvider(httpProvider))
+
+console.log(CLINICALTEST_CONTRACT)
 
 const clinicalTestRef = new web3.eth.Contract(
   clinicalTestContractABI,
