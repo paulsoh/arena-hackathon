@@ -7,9 +7,9 @@ const login = async () => {
     const { role, address, password } = await inquirer.prompt([
       {
         name: 'role',
-        message: '알바 or 회사',
+        message: '인간 or 회사',
         type: 'list',
-        choices: ['알바', '회사']
+        choices: ['human', 'company']
       },
       {
         name: 'address',
@@ -23,14 +23,15 @@ const login = async () => {
       }
     ])
 
-    return {
+    const user = {
       role,
-      address,
-      password,
+      id: 1,
     }
+
+    return user
   }
 }
 
-login()
+// login()
 
 module.exports = { login }

@@ -44,7 +44,7 @@ const registerPatient = async () => {
   return response
 }
 
-registerPatient()
+// registerPatient()
 
 module.exports = {
   registerPatient
