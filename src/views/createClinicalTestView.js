@@ -133,6 +133,7 @@ const createClinicalTestView = async user => {
         name: "property",
         message: "편집할 필드를 선택하세요",
         type: "list",
+        pageSize: 15,
         choices: [
           ...properties.map(
             property => ({
@@ -163,9 +164,9 @@ const createClinicalTestView = async user => {
         ]
       }
     ])
-    // console.log(property)
     clear()
     if (property === "Confirm") {
+      console.log(clinicalTest.prettyPrint())
       const { confirm } = await inquirer.prompt([
         {
           name: "confirm",
