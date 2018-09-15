@@ -165,11 +165,11 @@ const createClinicalTestView = async user => {
 
       if (confirm) {
         // Send Tx
-        createClinicalTest({
+        await createClinicalTest({
           ...clinicalTest
         })
+        return
       }
-      continue
     }
     // console.log(property)
     clear()
