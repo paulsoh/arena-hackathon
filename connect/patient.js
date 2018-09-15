@@ -2,11 +2,11 @@ const Web3 = require("web3")
 const fs = require("fs")
 const path = require("path")
 
-const gas = 467540
+const gas = 800000
 const gasPrice = "10000000000"
 const adminAddress = "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"
 
-const httpProvider = "http://localhost:8545"
+const httpProvider = "http://10.10.1.114:8545"
 const PATIENT_CONTRACT = "0xcfeb869f69431e42cdb54a4f4f105c19c080a601"
 const patientContractABI = JSON.parse(
   fs.readFileSync(

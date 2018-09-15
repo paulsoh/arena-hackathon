@@ -1,7 +1,8 @@
+const chalk = require('chalk')
+const figlet = require('figlet')
 const { clear, retrieveDiseaseData, retrieveMedicineData } = require("../utils")
 const inquirer = require("inquirer")
 const fs = require("fs")
-const term = require("terminal-kit").terminal
 const path = require("path")
 
 inquirer.registerPrompt("autocomplete", require("inquirer-autocomplete-prompt"))
@@ -13,10 +14,12 @@ inquirer.registerPrompt(
 const additionalMedicalInfo = async () => {
   clear()
 
-  term.drawImage(path.join(__dirname, "../../", "hospital.jpg"), {
-    shrink: { width: term.width, height: term.height * 2 }
-  })
-
+  console.log(
+    chalk.green(
+      figlet.textSync('Additional Information', { horizontalLayout: 'full' })
+    )
+  )
+  
   const responses = await inquirer.prompt([
     {
       name: "isTakingDrugs",

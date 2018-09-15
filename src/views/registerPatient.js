@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+const figlet = require('figlet')
 const { clear } = require("../utils")
 const inquirer = require("inquirer")
 const { createPatient } = require("../../connect/patient")
@@ -5,6 +7,12 @@ const { createPatient } = require("../../connect/patient")
 const registerPatient = async user => {
   clear()
 
+  console.log(
+    chalk.green(
+      figlet.textSync('Basic Information', { horizontalLayout: 'full' })
+    )
+  )
+  
   const response = await inquirer.prompt([
     {
       name: "email",
