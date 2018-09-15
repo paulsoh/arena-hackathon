@@ -25,6 +25,7 @@ const clinicalTestDetailView = async clinicalTest => {
           " "
         )}Gender\tSmoking\tHeight\tWeight\tDisease`,
         type: "list",
+        pageSize: 15,
         choices: [
           new inquirer.Separator("".padEnd(99, "-")),
           ...patientRows,

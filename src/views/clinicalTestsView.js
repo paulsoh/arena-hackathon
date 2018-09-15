@@ -23,6 +23,7 @@ const clinicalTestsView = async user => {
         name: "title",
         message: "List of Clinical Trials",
         type: "list",
+        pageSize: 15,
         choices: [
           ...clinicalTests.map(clinicalTest => clinicalTest.title),
           new inquirer.Separator(),
