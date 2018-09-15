@@ -39,7 +39,7 @@ const createClinicalTest = ({
   bmi = JSON.stringify({}),
   smoking = "",
   volume = 10,
-  diseases = JSON.stringify([]),
+  disease = JSON.stringify([]),
 }) => {
   return clinicalTestRef.methods
     .createClinicalTest(
@@ -50,7 +50,7 @@ const createClinicalTest = ({
       gender,
       JSON.stringify(age),
       JSON.stringify(bmi),
-      JSON.stringify(diseases),
+      JSON.stringify(disease),
       smoking,
       volume
     )
@@ -86,7 +86,7 @@ const FIELDS = [
   "bmi",
   "smoking",
   "volume",
-  "diseases",
+  "disease",
 ]
 
 const rehydrateClinicalTests = (...contractResponses) => {
@@ -96,6 +96,7 @@ const rehydrateClinicalTests = (...contractResponses) => {
   const [addresses, subjects, titles] = basicInfo
   const [_, genders, ages, bmis, smokings, volumes, diseases] = detailInfo
 
+  console.log(detailInfo)
   const clinicalTests = addresses.map((address, index) => {
     return new ClinicalTest({
       companyAddress: addresses[index],

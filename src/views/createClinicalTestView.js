@@ -86,7 +86,8 @@ const properties = [
       {
         name: "smoking",
         message: "Is smoker available?",
-        type: "confirm"
+        type: "list",
+        choices: ["Yes", "No", "Don't care"]
       }
     ]
   },
@@ -102,11 +103,11 @@ const properties = [
     ]
   },
   {
-    name: "diseases",
-    friendlyName: 'Diseases',
+    name: "disease",
+    friendlyName: 'Disease',
     inputs: [
       {
-        name: 'diseases',
+        name: 'disease',
         type: 'input',
       }
     ]
