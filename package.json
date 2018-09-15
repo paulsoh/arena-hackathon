@@ -11,10 +11,12 @@
     "@oclif/plugin-help": "^2",
     "axios": "^0.18.0",
     "cli-ux": "^4.8.2",
+    "ganache-cli": "^6.1.8",
     "inquirer": "^6.2.0",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "inquirer-checkbox-plus-prompt": "^1.0.1",
     "terminal-kit": "^1.26.2",
+    "truffle": "^4.1.14",
     "tslib": "^1"
   },
   "devDependencies": {
@@ -62,7 +64,9 @@
     "prepack": "rm -rf lib && tsc && oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
     "prepare": "rm -rf lib && tsc",
     "test": "nyc mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme && git add README.md",
+    "truffle": "truffle",
+    "ganache": "ganache-cli --deterministic -a 100"
   },
   "types": "lib/index.d.ts"
 }
