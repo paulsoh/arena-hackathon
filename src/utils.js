@@ -1,7 +1,17 @@
 const fs = require("fs")
 const path = require("path")
+const axios = require("axios")
 
 const DISEASEDATA_PATH = "diseaseSet.json"
+
+const retrieveMedicineData = async queryString => {
+  const response = await axios.get(
+    `https://mdwalks.net/api/info/search/detail?term=${queryString}&type=component`
+  )
+  return response.data.results.component.list.map(item => ({
+    name: item.name[0]
+  }))
+}
 
 const retrieveDiseaseData = queryString =>
   JSON.parse(
@@ -14,4 +24,4 @@ const clear = () => {
   console.log()
 }
 
-module.exports = { clear, retrieveDiseaseData }
+module.exports = { clear, retrieveDiseaseData, retrieveMedicineData }

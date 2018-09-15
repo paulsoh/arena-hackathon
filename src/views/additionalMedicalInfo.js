@@ -1,5 +1,4 @@
-const axios = require("axios")
-const { clear, retrieveDiseaseData } = require("../utils")
+const { clear, retrieveDiseaseData, retrieveMedicineData } = require("../utils")
 const inquirer = require("inquirer")
 const fs = require("fs")
 const term = require("terminal-kit").terminal
@@ -35,12 +34,7 @@ const additionalMedicalInfo = async () => {
       when: currentResponse => currentResponse.isTakingDrugs,
       source: async (answersSoFar, input) => {
         input = input || ""
-        const response = await axios.get(
-          `https://mdwalks.net/api/info/search/detail?term=${input}&type=component`
-        )
-        return response.data.results.component.list.map(item => ({
-          name: item.name[0]
-        }))
+        return retrieveMedicineData(input)
       }
     },
     {
@@ -81,19 +75,8 @@ const additionalMedicalInfo = async () => {
       choices: ["없음", "유전성 근질환"]
     }
   ])
-
+  // Create smart contracts
   console.log(responses)
-
-  // 7. 현재 약물 복용 여부를 입력한다
-  // const medicationList = await cli.prompt(
-  //   "💊 처방받은 약물 정보를 입력하세요"
-  // )
-
-  // 8. 유전 관련 문제 여부를 입력한다.
-  // 갈락토오스 불내성, Lapp 유당분해효소 결핍증, 포도당-갈락토오스 흡수장애
-
-  // 9. 가족력을 입력한다.
-  // 유전성 근질환
 }
 
 additionalMedicalInfo()
