@@ -140,7 +140,8 @@ const clinicalTestList = [
     subject: "병리학과",
     title: "급성 및 만성 위염 환자에서 CKD-495의 유효성과 안전성을 비교 평가하기 위한 무작위배정, 이중눈가림, 평행설계, 다기관, 제2상 임상시험",
     age: JSON.stringify([20, 55]),
-    volume: 5
+    volume: 5,
+    smoking: "No"
   },
   {
     companyAddress: "0x4f92c13cacf198eb25698709e3d225e6a2e22dd8",
@@ -148,7 +149,7 @@ const clinicalTestList = [
     title: "단백 및 식이섬유 강화 시리얼바의 식전 섭취가 제2형 당뇨병 환자에서 장기적인 혈당 조절에 미치는 영향 평가",
     age: JSON.stringify([19, 80]),
     bmi: JSON.stringify([18.5, 35]),
-    smoking: true,
+    smoking: "Yes",
     volume: 8
   },
   {
@@ -165,7 +166,7 @@ const generator = async () => {
       createPatient(patient)
     })
     clinicalTestList.forEach(function(clinicalTest) {
-      createClinicalTest(clinicalTestList)
+      createClinicalTest(clinicalTest)
     })
   } catch (e) {
     console.log(e)

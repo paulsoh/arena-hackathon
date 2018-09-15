@@ -5,7 +5,7 @@ const path = require("path")
 const { ClinicalTest } = require("../src/models/ClinicalTest")
 const loadConfig = require('./loader.js').loadConfig
 const { httpProvider, CLINICALTEST_CONTRACT, adminAddress } = loadConfig()
-const gas = 456540
+const gas = 556540
 const gasPrice = "10000000000"
 
 const clinicalTestContractABI = JSON.parse(
