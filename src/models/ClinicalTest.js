@@ -52,7 +52,7 @@ class ClinicalTest {
     process.stdout.write(chalk.red.bold.underline("Diseases:"))
     process.stdout.write(chalk.white(" "))
     console.log(
-      chalk.white(`${this.diseases.length ? this.diseases[0] : "None"}\n`)
+      chalk.white(`${this.diseases && this.diseases.length ? this.diseases[0] : "None"}\n`)
     )
 
     process.stdout.write(chalk.red.bold.underline("Gender:"))
