@@ -3,10 +3,10 @@ const figlet = require("figlet")
 const inquirer = require("inquirer")
 
 const { clear } = require("../utils")
-const { createClinicalTestView } = require("./createClinicalTest")
+const { createClinicalTestView } = require("./createClinicalTestView")
 const { getClinicalTests } = require("../../connect/clinicalTest")
 
-const showClinicalTests = async user => {
+const clinicalTestsView = async user => {
   while (true) {
     clear()
 
@@ -38,4 +38,4 @@ const showClinicalTests = async user => {
   }
 }
 
-module.exports = { showClinicalTests }
+module.exports = { clinicalTestsView }
