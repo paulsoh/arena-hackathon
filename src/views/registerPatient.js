@@ -15,12 +15,14 @@ const registerPatient = async user => {
       name: "gender",
       message: "성별을 입력하세요 (M/F)",
       type: "list",
-      choices: ["M", "F"]
+      choices: ["M", "F"],
+      default: "M"
     },
     {
       name: "birthday",
-      message: "🎂  생년월일을 입력하세요 (19500510)",
-      type: "input"
+      message: "🎂  생년월일을 입력하세요 (20080915)",
+      type: "input",
+      default: "20080915"
     },
     {
       name: "isSmoker",
@@ -29,13 +31,15 @@ const registerPatient = async user => {
     },
     {
       name: "height",
-      message: "신장을 입력하세요 (cm)",
-      type: "input"
+      message: "신장을 입력하세요 (170cm)",
+      type: "input",
+      default: "170"
     },
     {
       name: "weight",
-      message: "체중을 입력하세요 (kg)",
-      type: "input"
+      message: "체중을 입력하세요 (70kg)",
+      type: "input",
+      default: "70"
     }
   ])
   const patientInfo = {
