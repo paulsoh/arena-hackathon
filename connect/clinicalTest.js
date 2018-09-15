@@ -5,7 +5,7 @@ const path = require("path")
 const { ClinicalTest } = require("../src/models/ClinicalTest")
 const loadConfig = require("./loader.js").loadConfig
 const { httpProvider, CLINICALTEST_CONTRACT, adminAddress } = loadConfig()
-const gas = 556540
+const gas = 656540
 const gasPrice = "10000000000"
 
 const clinicalTestContractABI = JSON.parse(
@@ -37,7 +37,7 @@ const createClinicalTest = ({
   bmi = JSON.stringify({}),
   smoking = "",
   volume = 10,
-  disease = JSON.stringify([])
+  diseases = JSON.stringify([])
 }) => {
   return clinicalTestRef.methods
     .createClinicalTest(
@@ -46,11 +46,11 @@ const createClinicalTest = ({
       subject,
       title,
       gender,
-      JSON.stringify(age),
-      JSON.stringify(bmi),
+      typeof age === "string" ? age : JSON.stringify(age),
+      typeof bmi === "string" ? bmi : JSON.stringify(bmi),
       smoking,
       volume,
-      JSON.stringify(disease)
+      typeof diseases === "string" ? diseases : JSON.stringify(diseases)
     )
     .send({
       from: adminAddress, // comment out for development purposes
@@ -86,7 +86,7 @@ const FIELDS = [
   "bmi",
   "smoking",
   "volume",
-  "disease"
+  "diseases"
 ]
 
 const rehydrateClinicalTests = (...contractResponses) => {
@@ -106,7 +106,7 @@ const rehydrateClinicalTests = (...contractResponses) => {
       bmi: JSON.parse(bmis[index]),
       smoking: smokings[index],
       volume: volumes[index],
-      disease: diseases[index]
+      diseases: JSON.parse(diseases[index])
     })
   })
 

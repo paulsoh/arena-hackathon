@@ -12,7 +12,7 @@ class ClinicalTest {
     bmi,
     smoking,
     volume,
-    disease
+    diseases
   } = {}) {
     this.companyAddress = companyAddress
     this.subject = subject
@@ -22,7 +22,7 @@ class ClinicalTest {
     this.bmi = bmi
     this.smoking = smoking
     this.volume = volume
-    this.disease = disease
+    this.diseases = diseases
   }
 
   prettyPrint() {
@@ -49,9 +49,11 @@ class ClinicalTest {
     process.stdout.write(chalk.white(" "))
     console.log(chalk.white(`${this.title}\n`))
 
-    process.stdout.write(chalk.red.bold.underline("Disease:"))
+    process.stdout.write(chalk.red.bold.underline("Diseases:"))
     process.stdout.write(chalk.white(" "))
-    console.log(chalk.white(`${this.disease}\n`))
+    console.log(
+      chalk.white(`${this.diseases.length ? this.diseases[0] : "None"}\n`)
+    )
 
     process.stdout.write(chalk.red.bold.underline("Gender:"))
     process.stdout.write(chalk.white(" "))
@@ -61,9 +63,7 @@ class ClinicalTest {
     process.stdout.write(chalk.white(" "))
     console.log(
       chalk.white(
-        isEmpty(JSON.parse(this.age))
-          ? "-\n"
-          : `${this.age.min}-${this.age.max}\n`
+        isEmpty(this.age) ? "-\n" : `${this.age.min}-${this.age.max}\n`
       )
     )
 
@@ -71,9 +71,7 @@ class ClinicalTest {
     process.stdout.write(chalk.white(" "))
     console.log(
       chalk.white(
-        isEmpty(JSON.parse(this.bmi))
-          ? "-\n"
-          : `${this.bmi.min}-${this.bmi.max}\n`
+        isEmpty(this.bmi) ? "-\n" : `${this.bmi.min}-${this.bmi.max}\n`
       )
     )
     process.stdout.write(chalk.red.bold.underline("Smoking?:"))
@@ -88,6 +86,7 @@ class ClinicalTest {
         "===================================================================================\n"
       )
     )
+    console.log("\n")
   }
 }
 

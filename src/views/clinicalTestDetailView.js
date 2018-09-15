@@ -15,6 +15,8 @@ const clinicalTestDetailView = async clinicalTest => {
           patient.diseases.length ? patient.diseases[0] : "❌"
         }`
     )
+
+    // Print Clinical Test Meta Data
     console.log(clinicalTest.prettyPrint())
 
     const { patientSelect } = await inquirer.prompt([

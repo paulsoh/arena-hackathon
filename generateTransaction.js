@@ -10,8 +10,8 @@ const patientList = [
     isSmoker: "Y",
     height: 188,
     weight: 82,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['급성 출혈성 위염']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["급성 출혈성 위염"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -23,8 +23,8 @@ const patientList = [
     isSmoker: "N",
     height: 171,
     weight: 52,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['상세불명의 만성 위염']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["상세불명의 만성 위염"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -36,8 +36,8 @@ const patientList = [
     isSmoker: "N",
     height: 198,
     weight: 102,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['제2형 당뇨']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["제2형 당뇨"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -49,8 +49,8 @@ const patientList = [
     isSmoker: "N",
     height: 197,
     weight: 101,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['위-식도역류병']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["위-식도역류병"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -62,8 +62,8 @@ const patientList = [
     isSmoker: "N",
     height: 148,
     weight: 43,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['상세불명의 이차성 고혈압']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["상세불명의 이차성 고혈압"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -75,8 +75,8 @@ const patientList = [
     isSmoker: "N",
     height: 167,
     weight: 56,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['상세불명의 이차성 고혈압']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["상세불명의 이차성 고혈압"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -88,8 +88,8 @@ const patientList = [
     isSmoker: "N",
     height: 172,
     weight: 60,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['위-식도역류병']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["위-식도역류병"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -101,8 +101,8 @@ const patientList = [
     isSmoker: "Y",
     height: 182,
     weight: 78,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['제2형 당뇨']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["제2형 당뇨"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -114,8 +114,8 @@ const patientList = [
     isSmoker: "Y",
     height: 175,
     weight: 69,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['상세불명의 만성 위염']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["상세불명의 만성 위염"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   },
@@ -127,8 +127,8 @@ const patientList = [
     isSmoker: "Y",
     height: 179,
     weight: 75,
-    drugs: JSON.stringify(['nifedipine 20mg','indomethacin 10mg']),
-    diseases: JSON.stringify(['급성 출혈성 위염']),
+    drugs: JSON.stringify(["nifedipine 20mg", "indomethacin 10mg"]),
+    diseases: JSON.stringify(["급성 출혈성 위염"]),
     geneticConditions: JSON.stringify([]),
     familyHistory: JSON.stringify([])
   }
@@ -138,42 +138,46 @@ const clinicalTestList = [
   {
     companyAddress: "0x18282ec61c35bef47698c3e65314c9a0ff617b3c",
     subject: "병리학과",
-    title: "급성 및 만성 위염 환자에서 CKD-495의 유효성과 안전성을 비교 평가하기 위한 무작위배정, 이중눈가림, 평행설계, 다기관, 제2상 임상시험",
-    age: JSON.stringify({"min":20, "max":55}),
+    title:
+      "급성 및 만성 위염 환자에서 CKD-495의 유효성과 안전성을 비교 평가하기 위한 무작위배정, 이중눈가림, 평행설계, 다기관, 제2상 임상시험",
+    age: { min: 20, max: 55 },
     volume: 5,
-    diseases: JSON.stringify(['급성 출혈성 위염','상세불명의 만성 위염']),
+    diseases: ["급성 출혈성 위염", "상세불명의 만성 위염"],
     smoking: "No"
   },
   {
     companyAddress: "0x4f92c13cacf198eb25698709e3d225e6a2e22dd8",
     subject: "소화기내과",
-    title: "단백 및 식이섬유 강화 시리얼바의 식전 섭취가 제2형 당뇨병 환자에서 장기적인 혈당 조절에 미치는 영향 평가",
-    age: JSON.stringify({"min":19, "max":80}),
-    bmi: JSON.stringify({"min":18, "max":35}),
+    title:
+      "단백 및 식이섬유 강화 시리얼바의 식전 섭취가 제2형 당뇨병 환자에서 장기적인 혈당 조절에 미치는 영향 평가",
+    age: { min: 19, max: 80 },
+    bmi: { min: 18, max: 35 },
     smoking: "Yes",
-    diseases: JSON.stringify(['제2형 당뇨']),
+    diseases: ["제2형 당뇨"],
     volume: 8
   },
   {
     companyAddress: "0xfbdb66ae3fa6f1b37a02c82751117fc3aad4572b",
     subject: "병리학과",
     title: "위식도역류질환 치료제의 임상시험",
-    diseases: JSON.stringify(['위-식도역류병']),
+    diseases: ["위-식도역류병"],
     volume: 10
   },
   {
     companyAddress: "0x3b1cb706e5fff494da8873ad9c1a30aa802f4522",
     subject: "순환기내과",
     title: "저항성 고혈압 환자 대상 의료기기 임상시험 ",
-    age: JSON.stringify({"min":20, "max":75}),
-    diseases: JSON.stringify(['상세불명의 이차성 고혈압']),
+    age: { min: 20, max: 75 },
+    diseases: ["상세불명의 이차성 고혈압"],
     volume: 10
   },
   {
     companyAddress: "0xd74485a6600d8de95d84d5e1747480c528df1f9a",
     subject: "임상약리과",
-    title: "라푸티딘(Lafutidine)과 이르소글라딘 말레산염(Irsogladine maleate)의 제 1상 임상시험",
-    age: JSON.stringify({"min":19, "max":50}),
+    diseases: ["상세불명의 이차성 고혈압"],
+    title:
+      "라푸티딘(Lafutidine)과 이르소글라딘 말레산염(Irsogladine maleate)의 제 1상 임상시험",
+    age: { min: 19, max: 50 },
     volume: 10
   }
 ]

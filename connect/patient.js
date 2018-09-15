@@ -2,10 +2,10 @@ const Web3 = require("web3")
 const fs = require("fs")
 const path = require("path")
 
-const loadConfig = require('./loader.js').loadConfig
+const loadConfig = require("./loader.js").loadConfig
 const { httpProvider, PATIENT_CONTRACT, adminAddress } = loadConfig()
 
-const gas = 800000
+const gas = 856540
 const gasPrice = "10000000000"
 const patientContractABI = JSON.parse(
   fs.readFileSync(

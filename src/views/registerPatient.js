@@ -1,5 +1,5 @@
-const chalk = require('chalk')
-const figlet = require('figlet')
+const chalk = require("chalk")
+const figlet = require("figlet")
 const { clear } = require("../utils")
 const inquirer = require("inquirer")
 const { createPatient } = require("../../connect/patient")
@@ -9,15 +9,16 @@ const registerPatient = async user => {
 
   console.log(
     chalk.green(
-      figlet.textSync('Basic Information', { horizontalLayout: 'full' })
+      figlet.textSync("Basic Information", { horizontalLayout: "full" })
     )
   )
-  
+
   const response = await inquirer.prompt([
     {
       name: "email",
       message: "✉️  연락받을 수 있는 이메일 주소를 입력하세요",
-      type: "input"
+      type: "input",
+      default: "noreply@gmail.com"
     },
     {
       name: "gender",
