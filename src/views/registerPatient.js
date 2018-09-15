@@ -8,9 +8,7 @@ const registerPatient = async user => {
   clear()
 
   console.log(
-    chalk.green(
-      figlet.textSync("Basic Information", { horizontalLayout: "full" })
-    )
+    chalk.green(figlet.textSync("Basic Info", { horizontalLayout: "full" }))
   )
 
   const response = await inquirer.prompt([

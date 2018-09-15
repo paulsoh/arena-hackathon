@@ -19,7 +19,7 @@ console.log(chalk.green(figlet.textSync("ARENA", { horizontalLayout: "full" })))
 const entry = async () => {
   const user = await login()
 
-  if (user.role === "patient") {
+  if (user.role === "Patient") {
     const patientBasicInfo = await registerPatient(user)
     const additionalInfo = await additionalMedicalInfo(patientBasicInfo)
 
