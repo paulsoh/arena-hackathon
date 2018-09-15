@@ -1,7 +1,8 @@
 const { clear } = require("../utils")
 const inquirer = require("inquirer")
+const { createPatient } = require("../../connect/patient")
 
-const registerPatient = async () => {
+const registerPatient = async user => {
   clear()
 
   const response = await inquirer.prompt([
@@ -18,14 +19,13 @@ const registerPatient = async () => {
     },
     {
       name: "birthday",
-      message: "🎂  생년월일을 입력하세요 (1950/05/10)",
+      message: "🎂  생년월일을 입력하세요 (19500510)",
       type: "input"
     },
     {
       name: "isSmoker",
       message: "🚬  흡연 여부를 입력하세요 (Y/N)",
-      type: "list",
-      choices: ["Y", "N"]
+      type: "confirm"
     },
     {
       name: "height",
@@ -38,10 +38,13 @@ const registerPatient = async () => {
       type: "input"
     }
   ])
+  const patientInfo = {
+    ...response,
+    ...user,
+    bmi: response.weight / (response.height * response.height)
+  }
 
-  response.bmi = response.weight / (response.height * response.height)
-  console.log(response)
-  return response
+  return patientInfo
 }
 
 // registerPatient()

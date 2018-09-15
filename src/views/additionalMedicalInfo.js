@@ -75,11 +75,8 @@ const additionalMedicalInfo = async () => {
       choices: ["없음", "유전성 근질환"]
     }
   ])
-  // Create smart contracts
-  console.log(responses)
+  return responses
 }
-
-additionalMedicalInfo()
 
 module.exports = {
   additionalMedicalInfo
