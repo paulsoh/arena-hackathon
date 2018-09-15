@@ -100,6 +100,16 @@ const properties = [
         validate: vol => 0 < vol && vol < Infinity
       }
     ]
+  },
+  {
+    name: "diseases",
+    friendlyName: 'Diseases',
+    inputs: [
+      {
+        name: 'diseases',
+        type: 'input',
+      }
+    ]
   }
 ]
 

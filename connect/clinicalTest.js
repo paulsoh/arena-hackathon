@@ -38,7 +38,8 @@ const createClinicalTest = ({
   age = JSON.stringify({}),
   bmi = JSON.stringify({}),
   smoking = "",
-  volume = 10
+  volume = 10,
+  diseases = JSON.stringify([]),
 }) => {
   return clinicalTestRef.methods
     .createClinicalTest(
@@ -49,6 +50,7 @@ const createClinicalTest = ({
       gender,
       JSON.stringify(age),
       JSON.stringify(bmi),
+      JSON.stringify(diseases),
       smoking,
       volume
     )
@@ -83,7 +85,8 @@ const FIELDS = [
   "age",
   "bmi",
   "smoking",
-  "volume"
+  "volume",
+  "diseases",
 ]
 
 const rehydrateClinicalTests = (...contractResponses) => {
@@ -91,7 +94,7 @@ const rehydrateClinicalTests = (...contractResponses) => {
   const detailInfo = Object.values(contractResponses[1])
 
   const [addresses, subjects, titles] = basicInfo
-  const [_, genders, ages, bmis, smokings, volumes] = detailInfo
+  const [_, genders, ages, bmis, smokings, volumes, diseases] = detailInfo
 
   const clinicalTests = addresses.map((address, index) => {
     return new ClinicalTest({
@@ -102,7 +105,8 @@ const rehydrateClinicalTests = (...contractResponses) => {
       age: JSON.parse(ages[index]),
       bmi: JSON.parse(bmis[index]),
       smoking: smokings[index],
-      volume: volumes[index]
+      volume: volumes[index],
+      // disease: diseases[index],
     })
   })
 
